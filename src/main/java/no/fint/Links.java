@@ -6,6 +6,5 @@ import java.util.List;
 
 @Data
 public class Links<T> {
-    Class<T> klasse;
-    List<Referanse> identifikatorer;
+    private List<Link> links;
 }

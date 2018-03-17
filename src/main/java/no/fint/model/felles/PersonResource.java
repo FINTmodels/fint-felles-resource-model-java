@@ -1,26 +1,24 @@
 package no.fint.model.felles;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import no.fint.Link;
-import no.fint.Links;
-import no.fint.model.felles.kodeverk.iso.Kjonn;
-import no.fint.model.felles.kodeverk.iso.Landkode;
-import no.fint.model.felles.kodeverk.iso.Sprak;
+import lombok.*;
 import no.fint.model.felles.kompleksedatatyper.AdresseResource;
 
-@Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class PersonResource extends Person {
-    Links<Landkode> statsborgerskap;
-    Link<Kjonn> kjonn;
-    Link<Sprak> malform;
-    Link<Sprak> morsmal;
+    @Getter
+    @Setter
+    private AdresseResource bostedsadresseResource;
+    @Getter
+    @Setter
+    private AdresseResource postadresseResource;
 
-    AdresseResource bostedsadresseResource;
-    AdresseResource postadresseResource;
+    @Getter
+    private PersonLinks _links;
+
+    public void setLinks(PersonLinks personLinks) {
+        _links = personLinks;
+    }
+
 }

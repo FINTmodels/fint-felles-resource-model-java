@@ -1,9 +1,13 @@
 package no.fint;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
 public class Link<T> {
-    Class<T> klasse;
-    Referanse identifikator;
+    @Getter
+    private String href;
+
+    public void setVerdi(String verdi) {
+        href = verdi;
+    }
 }
+
