@@ -11,7 +11,6 @@ public class PersonResource extends Person {
     @Getter
     private AdresseResource bostedsadresse;
     @Getter
-    @Setter
     private AdresseResource postadresse;
 
     @Getter
@@ -25,8 +24,18 @@ public class PersonResource extends Person {
         this.bostedsadresse = bostedsadresse;
     }
 
+    @Override
     public void setBostedsadresse(Adresse bostedsadresse) {
         this.bostedsadresse = new AdresseResource(bostedsadresse);
+    }
+
+    public void setPostadresse(AdresseResource postadresse) {
+        this.postadresse = postadresse;
+    }
+
+    @Override
+    public void setPostadresse(Adresse postadresse) {
+        this.postadresse = new AdresseResource(postadresse);
     }
 
 }
