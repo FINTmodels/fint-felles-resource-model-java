@@ -9,10 +9,10 @@ import no.fint.model.felles.kompleksedatatyper.AdresseResource;
 public class PersonResource extends Person {
     @Getter
     @Setter
-    private AdresseResource bostedsadresseResource;
+    private AdresseResource bostedsadresse;
     @Getter
     @Setter
-    private AdresseResource postadresseResource;
+    private AdresseResource postadresse;
 
     @Getter
     private PersonLinks _links;
