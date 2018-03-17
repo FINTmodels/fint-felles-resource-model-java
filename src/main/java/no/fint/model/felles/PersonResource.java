@@ -1,6 +1,7 @@
 package no.fint.model.felles;
 
 import lombok.*;
+import no.fint.model.felles.kompleksedatatyper.Adresse;
 import no.fint.model.felles.kompleksedatatyper.AdresseResource;
 
 @NoArgsConstructor
@@ -8,7 +9,6 @@ import no.fint.model.felles.kompleksedatatyper.AdresseResource;
 @ToString(callSuper = true)
 public class PersonResource extends Person {
     @Getter
-    @Setter
     private AdresseResource bostedsadresse;
     @Getter
     @Setter
@@ -19,6 +19,14 @@ public class PersonResource extends Person {
 
     public void setLinks(PersonLinks personLinks) {
         _links = personLinks;
+    }
+
+    public void setBostedsadresse(AdresseResource bostedsadresse) {
+        this.bostedsadresse = bostedsadresse;
+    }
+
+    public void setBostedsadresse(Adresse bostedsadresse) {
+        this.bostedsadresse = new AdresseResource(bostedsadresse);
     }
 
 }
