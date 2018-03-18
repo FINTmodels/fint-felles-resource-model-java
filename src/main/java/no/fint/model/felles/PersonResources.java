@@ -1,9 +1,11 @@
 package no.fint.model.felles;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import no.fint.Link;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString(callSuper = true)
-public class PersonResources {
+public class PersonResources implements FintLinks {
     @Getter
     private EmbeddedResource _embedded = new EmbeddedResource();
 
@@ -28,6 +30,14 @@ public class PersonResources {
 
     public void addResource(PersonResource personResource) {
         _embedded._entires.add(personResource);
+    }
+
+    @JsonIgnore
+    @Override
+    public List<List<? extends Link>> getLinkLists() {
+        List<List<? extends Link>> linkLists = new ArrayList<>();
+        linkLists.add(_links.getSelf());
+        return linkLists;
     }
 
     private class EmbeddedResource {

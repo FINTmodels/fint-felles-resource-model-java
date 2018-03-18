@@ -23,8 +23,9 @@ repositories {
 
 apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/dependencies.gradle'
 dependencies {
-    compile "no.fint:fint-felles-model-java:${version}"
-    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    compile('com.fasterxml.jackson.core:jackson-databind:2.9.4')
+    compile("no.fint:fint-felles-model-java:${version}")
+    compileOnly("org.projectlombok:lombok:${lombokVersion}")
 }
 
 

@@ -1,13 +1,21 @@
 package no.fint.model.felles;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import no.fint.Link;
 import no.fint.model.felles.kompleksedatatyper.Adresse;
 import no.fint.model.felles.kompleksedatatyper.AdresseResource;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class PersonResource extends Person {
+public class PersonResource extends Person implements FintLinks {
     @Getter
     private AdresseResource bostedsadresse;
     @Getter
@@ -38,4 +46,14 @@ public class PersonResource extends Person {
         this.postadresse = new AdresseResource(postadresse);
     }
 
+    @JsonIgnore
+    @Override
+    public List<List<? extends Link>> getLinkLists() {
+        List<List<? extends Link>> linkLists = new ArrayList<>();
+        linkLists.add(_links.getKjonn());
+        linkLists.add(_links.getMalform());
+        linkLists.add(_links.getMorsmal());
+        linkLists.add(_links.getStatsborgerskap());
+        return linkLists;
+    }
 }
