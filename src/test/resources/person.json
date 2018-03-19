@@ -1,7 +1,4 @@
 {
-  "kontaktinformasjon": null,
-  "postadresse": null,
-  "bilde": null,
   "bostedsadresse": {
     "adresselinje": [
       "Storgata 12"
@@ -11,12 +8,10 @@
   },
   "fodselsdato": -459133200000,
   "fodselsnummer": {
-    "gyldighetsperiode": null,
     "identifikatorverdi": "12345678901"
   },
   "navn": {
     "etternavn": "Test",
-    "fornavn": "Tore",
-    "mellomnavn": null
+    "fornavn": "Tore"
   }
 }

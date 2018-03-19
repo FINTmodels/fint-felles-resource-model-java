@@ -32,6 +32,7 @@ public class PersonResource extends Person implements FintLinks {
         this.bostedsadresse = bostedsadresse;
     }
 
+    @JsonIgnore
     @Override
     public void setBostedsadresse(Adresse bostedsadresse) {
         this.bostedsadresse = new AdresseResource(bostedsadresse);
@@ -41,6 +42,7 @@ public class PersonResource extends Person implements FintLinks {
         this.postadresse = postadresse;
     }
 
+    @JsonIgnore
     @Override
     public void setPostadresse(Adresse postadresse) {
         this.postadresse = new AdresseResource(postadresse);

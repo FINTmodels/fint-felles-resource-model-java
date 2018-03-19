@@ -1,24 +1,18 @@
 {
-  "kontaktinformasjon": null,
-  "postadresse": null,
-  "bilde": null,
   "bostedsadresse": {
     "adresselinje": [
       "Storgata 12"
     ],
     "postnummer": "1234",
-    "poststed": "Test",
-    "_links": null
+    "poststed": "Test"
   },
   "fodselsdato": -459133200000,
   "fodselsnummer": {
-    "gyldighetsperiode": null,
     "identifikatorverdi": "12345678901"
   },
   "navn": {
     "etternavn": "Test",
-    "fornavn": "Tore",
-    "mellomnavn": null
+    "fornavn": "Tore"
   },
   "_links": {
     "statsborgerskap": [
@@ -30,8 +24,6 @@
       {
         "href": "/felles/kjonn/systemid/1"
       }
-    ],
-    "malform": null,
-    "morsmal": null
+    ]
   }
 }
