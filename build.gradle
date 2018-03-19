@@ -26,6 +26,7 @@ dependencies {
     compile('com.fasterxml.jackson.core:jackson-databind:2.9.4')
     compile("no.fint:fint-felles-model-java:${version}")
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
 }
 
 
