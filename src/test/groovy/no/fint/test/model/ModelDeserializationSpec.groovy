@@ -111,5 +111,6 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.bostedsadresse
     }
 }
