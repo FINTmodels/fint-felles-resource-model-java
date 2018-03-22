@@ -1,6 +1,7 @@
 package no.fint.test.model
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import groovy.json.JsonSlurper
 import no.fint.Link
 import no.fint.model.felles.Person
 import no.fint.model.felles.PersonLinks
@@ -14,7 +15,13 @@ import no.fint.model.felles.kompleksedatatyper.Personnavn
 import spock.lang.Specification
 
 class ModelSerializationSpec extends Specification {
-    def objectMapper = new ObjectMapper()
+    def objectMapper
+    def jsonSlurper
+
+    void setup() {
+        objectMapper = new ObjectMapper()
+        jsonSlurper = new JsonSlurper()
+    }
 
     def "Serialize Person without Links"() {
         given:
@@ -28,9 +35,12 @@ class ModelSerializationSpec extends Specification {
         when:
         def result = objectMapper.writeValueAsString(person)
         println(result)
+        def object = jsonSlurper.parseText(result)
 
         then:
-        result.size() > 0
+        object
+        object.bostedsadresse.adresselinje
+        object.navn.etternavn
     }
 
     def "Serialize PersonResource with only own links"() {
@@ -50,9 +60,11 @@ class ModelSerializationSpec extends Specification {
         when:
         def result = objectMapper.writeValueAsString(person)
         println(result)
+        def object = jsonSlurper.parseText(result)
 
         then:
-        result.size() > 0
+        object
+        object._links.statsborgerskap
     }
 
     def "Serialize PersonResource with deep links"() {
@@ -75,9 +87,10 @@ class ModelSerializationSpec extends Specification {
         when:
         def result = objectMapper.writeValueAsString(person)
         println(result)
+        def object = jsonSlurper.parseText(result)
 
         then:
-        result.size() > 0
-
+        object
+        object.bostedsadresse._links.land
     }
 }
