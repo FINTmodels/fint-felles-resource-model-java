@@ -20,8 +20,9 @@ public class PersonResources implements FintLinks {
     @Getter
     private CollectionLinks _links;
 
+    @JsonIgnore
     public int getTotal_items() {
-        return _embedded._entires.size();
+        return _embedded._entries.size();
     }
 
     public void setLinks(CollectionLinks collectionLinks) {
@@ -29,7 +30,7 @@ public class PersonResources implements FintLinks {
     }
 
     public void addResource(PersonResource personResource) {
-        _embedded._entires.add(personResource);
+        _embedded._entries.add(personResource);
     }
 
     @JsonIgnore
@@ -40,8 +41,9 @@ public class PersonResources implements FintLinks {
         return linkLists;
     }
 
+    @NoArgsConstructor
     private class EmbeddedResource {
         @Getter
-        private List<PersonResource> _entires = new ArrayList<>();
+        private List<PersonResource> _entries = new ArrayList<>();
     }
 }

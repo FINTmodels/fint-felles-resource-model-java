@@ -1,6 +1,7 @@
 package no.fint.model.felles;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,12 @@ public class PersonResource extends Person implements FintLinks {
     @Getter
     private PersonLinks _links;
 
+    @JsonSetter("_links")
     public void setLinks(PersonLinks personLinks) {
         _links = personLinks;
     }
 
+    @JsonSetter
     public void setBostedsadresse(AdresseResource bostedsadresse) {
         this.bostedsadresse = bostedsadresse;
     }
@@ -38,6 +41,7 @@ public class PersonResource extends Person implements FintLinks {
         this.bostedsadresse = new AdresseResource(bostedsadresse);
     }
 
+    @JsonSetter
     public void setPostadresse(AdresseResource postadresse) {
         this.postadresse = postadresse;
     }

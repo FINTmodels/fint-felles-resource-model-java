@@ -13,6 +13,20 @@
       ]
     }
   },
+  "postadresse": {
+    "adresselinje": [
+      "Storgata 12"
+    ],
+    "postnummer": "1234",
+    "poststed": "Test",
+    "_links": {
+      "land": [
+        {
+          "href": "/felles/land/systemid/no"
+        }
+      ]
+    }
+  },
   "fodselsdato": -459133200000,
   "fodselsnummer": {
     "identifikatorverdi": "12345678901"

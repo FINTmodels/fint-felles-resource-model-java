@@ -1,11 +1,13 @@
 package no.fint.test.model
 
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import no.fint.model.felles.Person
 import no.fint.model.felles.PersonResource
+import no.fint.model.felles.PersonResources
+import org.springframework.hateoas.Resources
 import spock.lang.Specification
 
 class ModelDeserializationSpec extends Specification {
@@ -112,5 +114,22 @@ class ModelDeserializationSpec extends Specification {
         then:
         result
         result.bostedsadresse
+        result.postadresse
+    }
+
+    def "Read PersonResources from personresourceslinks.json"() {
+        given:
+        def input = getClass().getResourceAsStream("/personresourceslinks.json")
+
+        when:
+        def result = objectMapper.readValue(input, PersonResources.class)
+        println(result)
+
+        then:
+        result
+        result.total_items == 1
+        result._links.self.size() == 1
+        result._embedded._entries[0].bostedsadresse
+        result._embedded._entries[0].postadresse
     }
 }
