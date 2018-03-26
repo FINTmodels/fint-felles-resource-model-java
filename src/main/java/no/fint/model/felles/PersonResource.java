@@ -11,6 +11,7 @@ import no.fint.model.felles.kompleksedatatyper.Adresse;
 import no.fint.model.felles.kompleksedatatyper.AdresseResource;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @NoArgsConstructor
@@ -61,5 +62,15 @@ public class PersonResource extends Person implements FintLinks {
         linkLists.add(_links.getMorsmal());
         linkLists.add(_links.getStatsborgerskap());
         return linkLists;
+    }
+
+    @JsonIgnore
+    @Override
+    public LinkedHashMap<String, List<Link<?>>> getCustomLinks() {
+        if (_links.containsCustomLinks()) {
+            return _links.getCustomLinks();
+        } else {
+            return new LinkedHashMap<>();
+        }
     }
 }
