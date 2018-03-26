@@ -16,10 +16,10 @@ class SpringModelDeserializationSpec extends Specification {
     @Autowired
     private ObjectMapper objectMapper
 
-    def "Read Resource from personresourcelinks.json"() {
+    def "Read Resource from personresourcelinks json"() {
         given:
         def input = getClass().getResourceAsStream("/personresourcelinks.json")
-
+        
         when:
         def result = objectMapper.readValue(input, new TypeReference<Resource<Person>>() {})
 
@@ -29,7 +29,7 @@ class SpringModelDeserializationSpec extends Specification {
         result.content
     }
 
-    def "Read Resources from personresourceslinks.json"() {
+    def "Read Resources from personresourceslinks json"() {
         given:
         def input = getClass().getResourceAsStream("/personresourceslinks.json")
 
