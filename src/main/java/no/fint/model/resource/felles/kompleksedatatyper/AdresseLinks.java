@@ -1,7 +1,7 @@
 package no.fint.model.resource.felles.kompleksedatatyper;
 
 import lombok.Data;
-import no.fint.model.felles.kodeverk.iso.LandkodeRelation;
+import no.fint.model.relation.felles.LandkodeRelation;
 import no.fint.model.resource.Link;
 
 import java.util.List;

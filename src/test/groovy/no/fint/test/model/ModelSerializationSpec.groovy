@@ -2,16 +2,16 @@ package no.fint.test.model
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.json.JsonSlurper
-import no.fint.Link
 import no.fint.model.felles.Person
-import no.fint.model.felles.PersonLinks
-import no.fint.model.felles.PersonResource
 import no.fint.model.felles.kodeverk.iso.Kjonn
 import no.fint.model.felles.kodeverk.iso.Landkode
 import no.fint.model.felles.kompleksedatatyper.Adresse
-import no.fint.model.felles.kompleksedatatyper.AdresseLinks
 import no.fint.model.felles.kompleksedatatyper.Identifikator
 import no.fint.model.felles.kompleksedatatyper.Personnavn
+import no.fint.model.resource.Link
+import no.fint.model.resource.felles.PersonLinks
+import no.fint.model.resource.felles.PersonResource
+import no.fint.model.resource.felles.kompleksedatatyper.AdresseLinks
 import spock.lang.Specification
 
 class ModelSerializationSpec extends Specification {

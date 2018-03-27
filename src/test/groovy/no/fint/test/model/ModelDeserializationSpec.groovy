@@ -1,13 +1,11 @@
 package no.fint.test.model
 
-import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import no.fint.model.felles.Person
-import no.fint.model.felles.PersonResource
-import no.fint.model.felles.PersonResources
-import org.springframework.hateoas.Resources
+import no.fint.model.resource.felles.PersonResource
+import no.fint.model.resource.felles.PersonResources
 import spock.lang.Specification
 
 class ModelDeserializationSpec extends Specification {

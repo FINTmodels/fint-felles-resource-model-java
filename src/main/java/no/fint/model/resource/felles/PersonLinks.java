@@ -2,9 +2,9 @@ package no.fint.model.resource.felles;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import no.fint.model.felles.kodeverk.iso.KjonnRelation;
-import no.fint.model.felles.kodeverk.iso.LandkodeRelation;
-import no.fint.model.felles.kodeverk.iso.SprakRelation;
+import no.fint.model.relation.felles.KjonnRelation;
+import no.fint.model.relation.felles.LandkodeRelation;
+import no.fint.model.relation.felles.SprakRelation;
 import no.fint.model.resource.AbstractLinks;
 import no.fint.model.resource.Link;
 
