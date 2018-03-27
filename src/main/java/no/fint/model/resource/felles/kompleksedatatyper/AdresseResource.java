@@ -1,9 +1,10 @@
-package no.fint.model.felles.kompleksedatatyper;
+package no.fint.model.resource.felles.kompleksedatatyper;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import no.fint.model.felles.kompleksedatatyper.Adresse;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

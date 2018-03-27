@@ -1,11 +1,13 @@
-package no.fint.model.felles;
+package no.fint.model.resource.felles;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import no.fint.Link;
+import no.fint.model.resource.CollectionLinks;
+import no.fint.model.resource.FintLinks;
+import no.fint.model.resource.Link;
 
 import java.util.ArrayList;
 import java.util.List;

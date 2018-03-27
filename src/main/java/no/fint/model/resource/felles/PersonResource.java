@@ -1,4 +1,4 @@
-package no.fint.model.felles;
+package no.fint.model.resource.felles;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -6,9 +6,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import no.fint.Link;
+import no.fint.model.felles.Person;
 import no.fint.model.felles.kompleksedatatyper.Adresse;
-import no.fint.model.felles.kompleksedatatyper.AdresseResource;
+import no.fint.model.resource.FintLinks;
+import no.fint.model.resource.Link;
+import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
