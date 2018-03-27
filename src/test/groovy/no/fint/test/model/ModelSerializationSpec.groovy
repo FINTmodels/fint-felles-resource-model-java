@@ -3,15 +3,11 @@ package no.fint.test.model
 import com.fasterxml.jackson.databind.ObjectMapper
 import groovy.json.JsonSlurper
 import no.fint.model.felles.Person
-import no.fint.model.felles.kodeverk.iso.Kjonn
-import no.fint.model.felles.kodeverk.iso.Landkode
 import no.fint.model.felles.kompleksedatatyper.Adresse
 import no.fint.model.felles.kompleksedatatyper.Identifikator
 import no.fint.model.felles.kompleksedatatyper.Personnavn
-import no.fint.model.resource.Link
-import no.fint.model.resource.felles.PersonLinks
+import no.fint.model.resource.felles.Link
 import no.fint.model.resource.felles.PersonResource
-import no.fint.model.resource.felles.kompleksedatatyper.AdresseLinks
 import spock.lang.Specification
 
 class ModelSerializationSpec extends Specification {
@@ -29,7 +25,7 @@ class ModelSerializationSpec extends Specification {
                 fodselsnummer: new Identifikator(identifikatorverdi: "12345678901"),
                 navn: new Personnavn(fornavn: "Tore", etternavn: "Test"),
                 fodselsdato: new Date(55, 5, 15),
-                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: [ "Storgata 12"])
+                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
         )
 
         when:
@@ -49,14 +45,11 @@ class ModelSerializationSpec extends Specification {
                 fodselsnummer: new Identifikator(identifikatorverdi: "12345678901"),
                 navn: new Personnavn(fornavn: "Tore", etternavn: "Test"),
                 fodselsdato: new Date(55, 5, 15),
-                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: [ "Storgata 12"])
+                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
         )
-        def links = new PersonLinks(
-                kjonn: [ new Link<Kjonn>(href: "/felles/kjonn/systemid/1") ],
-                statsborgerskap: [ new Link<Landkode>(href: "/felles/land/systemid/no")]
-        )
-        person.setLinks(links)
-        
+        person.addKjonn(Link.with("/felles/kjonn/systemid/1"))
+        person.addStatsborgerskap(Link.with("/felles/land/systemid/no"))
+
         when:
         def result = objectMapper.writeValueAsString(person)
         println(result)
@@ -73,16 +66,12 @@ class ModelSerializationSpec extends Specification {
                 fodselsnummer: new Identifikator(identifikatorverdi: "12345678901"),
                 navn: new Personnavn(fornavn: "Tore", etternavn: "Test"),
                 fodselsdato: new Date(55, 5, 15),
-                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: [ "Storgata 12"])
+                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
         )
-        def links = new PersonLinks(
-                kjonn: [ new Link<Kjonn>(href: "/felles/kjonn/systemid/1") ],
-                statsborgerskap: [ new Link<Landkode>(href: "/felles/land/systemid/no")]
-        )
-        person.setLinks(links)
-        person.bostedsadresse.setLinks(new AdresseLinks(
-                land: [ new Link<Landkode>(href: "/felles/land/systemid/no") ]
-        ))
+        person.addKjonn(new Link(href: "/felles/kjonn/systemid/1"))
+        person.addStatsborgerskap(new Link(href: "/felles/land/systemid/no"))
+
+        person.bostedsadresse.addLand(new Link(href: "/felles/land/systemid/no"))
 
         when:
         def result = objectMapper.writeValueAsString(person)

@@ -8,11 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import no.fint.model.felles.Person;
 import no.fint.model.felles.kompleksedatatyper.Adresse;
-import no.fint.model.resource.FintLinks;
-import no.fint.model.resource.Link;
 import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,16 +20,27 @@ import java.util.Map;
 @ToString(callSuper = true)
 public class PersonResource extends Person implements FintLinks {
     @Getter
+    private final Map<String, List<Link>> links = Collections.synchronizedMap(new LinkedHashMap<>());
+
+    @Getter
     private AdresseResource bostedsadresse;
     @Getter
     private AdresseResource postadresse;
 
-    @Getter
-    private PersonLinks _links;
+    public void addStatsborgerskap(Link link) {
+        addLink("statsborgerskap", link);
+    }
 
-    @JsonSetter("_links")
-    public void setLinks(PersonLinks personLinks) {
-        _links = personLinks;
+    public void addKjonn(Link link) {
+        addLink("kjonn", link);
+    }
+
+    public void addMalform(Link link) {
+        addLink("malform", link);
+    }
+
+    public void addMorsmal(Link link) {
+        addLink("morsmal", link);
     }
 
     @JsonSetter
@@ -56,24 +65,4 @@ public class PersonResource extends Person implements FintLinks {
         this.postadresse = new AdresseResource(postadresse);
     }
 
-    @JsonIgnore
-    @Override
-    public List<List<? extends Link>> getLinkLists() {
-        List<List<? extends Link>> linkLists = new ArrayList<>();
-        linkLists.add(_links.getKjonn());
-        linkLists.add(_links.getMalform());
-        linkLists.add(_links.getMorsmal());
-        linkLists.add(_links.getStatsborgerskap());
-        return linkLists;
-    }
-
-    @JsonIgnore
-    @Override
-    public Map<String, List<Link<?>>> getCustomLinks() {
-        if (_links.containsCustomLinks()) {
-            return _links.getCustomLinks();
-        } else {
-            return new LinkedHashMap<>();
-        }
-    }
 }

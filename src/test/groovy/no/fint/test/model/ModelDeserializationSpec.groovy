@@ -125,8 +125,8 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
-        result.total_items == 1
-        result._links.self.size() == 1
+        result.getTotalItems() == 1
+        result.links.self.size() == 1
         result._embedded._entries[0].bostedsadresse
         result._embedded._entries[0].postadresse
     }

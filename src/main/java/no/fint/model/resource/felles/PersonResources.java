@@ -1,46 +1,26 @@
 package no.fint.model.resource.felles;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import no.fint.model.resource.CollectionLinks;
-import no.fint.model.resource.FintLinks;
-import no.fint.model.resource.Link;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class PersonResources implements FintLinks {
+public class PersonResources extends AbstractResources {
     @Getter
-    private EmbeddedResource _embedded = new EmbeddedResource();
+    private PersonResources.EmbeddedResource _embedded = new PersonResources.EmbeddedResource();
 
-    @Getter
-    private CollectionLinks _links;
+    public void addResource(PersonResource resource) {
+        _embedded._entries.add(resource);
+    }
 
-    @JsonIgnore
-    public int getTotal_items() {
+    public int getTotalItems() {
         return _embedded._entries.size();
-    }
-
-    public void setLinks(CollectionLinks collectionLinks) {
-        _links = collectionLinks;
-    }
-
-    public void addResource(PersonResource personResource) {
-        _embedded._entries.add(personResource);
-    }
-
-    @JsonIgnore
-    @Override
-    public List<List<? extends Link>> getLinkLists() {
-        List<List<? extends Link>> linkLists = new ArrayList<>();
-        linkLists.add(_links.getSelf());
-        return linkLists;
     }
 
     @NoArgsConstructor
