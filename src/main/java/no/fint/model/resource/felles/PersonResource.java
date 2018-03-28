@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import no.fint.model.felles.Person;
 import no.fint.model.felles.kompleksedatatyper.Adresse;
+import no.fint.model.resource.FintLinks;
+import no.fint.model.resource.Link;
 import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
 
 import java.util.Collections;

@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import no.fint.model.resource.AbstractResources;
 
 import java.util.ArrayList;
 import java.util.List;

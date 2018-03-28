@@ -6,7 +6,7 @@ import no.fint.model.felles.Person
 import no.fint.model.felles.kompleksedatatyper.Adresse
 import no.fint.model.felles.kompleksedatatyper.Identifikator
 import no.fint.model.felles.kompleksedatatyper.Personnavn
-import no.fint.model.resource.felles.Link
+import no.fint.model.resource.Link
 import no.fint.model.resource.felles.PersonResource
 import spock.lang.Specification
 

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import no.fint.model.felles.kompleksedatatyper.Adresse;
-import no.fint.model.resource.felles.FintLinks;
-import no.fint.model.resource.felles.Link;
+import no.fint.model.resource.FintLinks;
+import no.fint.model.resource.Link;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
