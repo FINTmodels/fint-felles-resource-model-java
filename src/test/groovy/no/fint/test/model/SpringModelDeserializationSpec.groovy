@@ -27,6 +27,8 @@ class SpringModelDeserializationSpec extends Specification {
         result
         result.links.size() == 2
         result.content
+        result.content.bostedsadresse
+        result.content.postadresse
     }
 
     def "Read Resources from personresourceslinks json"() {
@@ -40,5 +42,7 @@ class SpringModelDeserializationSpec extends Specification {
         result
         result.links.size() == 1
         result.content
+        result.content.bostedsadresse
+        result.content.postadresse
     }
 }
