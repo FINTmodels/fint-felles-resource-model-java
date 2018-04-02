@@ -8,8 +8,6 @@ import no.fint.model.felles.kompleksedatatyper.Adresse;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +16,7 @@ import java.util.Map;
 @ToString(callSuper = true)
 public class AdresseResource extends Adresse implements FintLinks {
     @Getter
-    private final Map<String, List<Link>> links = Collections.synchronizedMap(new LinkedHashMap<>());
+    private final Map<String, List<Link>> links = createLinks();
 
     public AdresseResource(Adresse adresse) {
         this.setPoststed(adresse.getPoststed());
