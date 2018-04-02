@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -32,6 +33,14 @@ public class PersonResource extends Person implements FintLinks {
     // Resources
     @Getter
     private AdresseResource bostedsadresse;
+
+    @Override
+    public List<FintLinks> getNestedResources() {
+        List<FintLinks> result = new ArrayList<>();
+        result.add(bostedsadresse);
+        return result;
+    }
+    
     @JsonSetter
     public void setBostedsadresse(AdresseResource _bostedsadresse) {
         this.bostedsadresse = _bostedsadresse;
