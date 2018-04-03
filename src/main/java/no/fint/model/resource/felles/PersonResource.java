@@ -34,6 +34,7 @@ public class PersonResource extends Person implements FintLinks {
     @Getter
     private AdresseResource bostedsadresse;
 
+    @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = new ArrayList<>();
