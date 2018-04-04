@@ -25,31 +25,52 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 import no.fint.model.felles.kompleksedatatyper.Personnavn;
 import no.fint.model.felles.basisklasser.Aktor;
 import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
+import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class PersonResource extends Person implements FintLinks {
+    public static PersonResource create(Person other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof PersonResource) {
+            return (PersonResource)other;
+        }
+        PersonResource result = new PersonResource();
+        result.setBilde(other.getBilde());
+        result.setBostedsadresse(other.getBostedsadresse());
+        result.setFodselsdato(other.getFodselsdato());
+        result.setFodselsnummer(other.getFodselsnummer());
+        result.setNavn(other.getNavn());
+        result.setKontaktinformasjon(other.getKontaktinformasjon());
+        result.setPostadresse(other.getPostadresse());
+        return result;
+    }
     // Resources
-    @Getter
-    private AdresseResource bostedsadresse;
-
     @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = new ArrayList<>();
-        result.add(bostedsadresse);
+        if (getBostedsadresse() != null) {
+            result.add(AdresseResource.create(getBostedsadresse()));
+        }
+        if (getPostadresse() != null) {
+            result.add(AdresseResource.create(getPostadresse()));
+        }
         return result;
     }
     
     @JsonSetter
-    public void setBostedsadresse(AdresseResource _bostedsadresse) {
-        this.bostedsadresse = _bostedsadresse;
-    }
-    @JsonIgnore
     @Override
-    public void setBostedsadresse(Adresse _bostedsadresse) {
-        this.bostedsadresse = new AdresseResource(_bostedsadresse);
+    public void setBostedsadresse(Adresse bostedsadresse) {
+        super.setBostedsadresse(AdresseResource.create(bostedsadresse));
+    }
+    @JsonSetter
+    @Override
+    public void setPostadresse(Adresse postadresse) {
+        super.setPostadresse(AdresseResource.create(postadresse));
     }
 
     // Links

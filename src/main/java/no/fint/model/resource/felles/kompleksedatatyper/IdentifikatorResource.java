@@ -18,31 +18,27 @@ import java.util.stream.Collectors;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
 
-import no.fint.model.felles.kompleksedatatyper.Adresse;
+import no.fint.model.felles.kompleksedatatyper.Identifikator;
+import no.fint.model.felles.kompleksedatatyper.Periode;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class AdresseResource extends Adresse implements FintLinks {
-    public static AdresseResource create(Adresse other) {
+public class IdentifikatorResource extends Identifikator implements FintLinks {
+    public static IdentifikatorResource create(Identifikator other) {
         if (other == null) {
             return null;
         }
-        if (other instanceof AdresseResource) {
-            return (AdresseResource)other;
+        if (other instanceof IdentifikatorResource) {
+            return (IdentifikatorResource)other;
         }
-        AdresseResource result = new AdresseResource();
-        result.setAdresselinje(other.getAdresselinje());
-        result.setPostnummer(other.getPostnummer());
-        result.setPoststed(other.getPoststed());
+        IdentifikatorResource result = new IdentifikatorResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setIdentifikatorverdi(other.getIdentifikatorverdi());
         return result;
     }
 
     // Links
     @Getter
     private final Map<String, List<Link>> links = createLinks();
-        
-    public void addLand(Link link) {
-        addLink("land", link);
-    }
 }

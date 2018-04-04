@@ -25,6 +25,21 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class KjonnResource extends Kjonn implements FintLinks {
+    public static KjonnResource create(Kjonn other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof KjonnResource) {
+            return (KjonnResource)other;
+        }
+        KjonnResource result = new KjonnResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

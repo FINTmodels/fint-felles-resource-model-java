@@ -25,6 +25,21 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class LandkodeResource extends Landkode implements FintLinks {
+    public static LandkodeResource create(Landkode other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof LandkodeResource) {
+            return (LandkodeResource)other;
+        }
+        LandkodeResource result = new LandkodeResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

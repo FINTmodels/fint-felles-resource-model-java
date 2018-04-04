@@ -25,6 +25,21 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class FylkeResource extends Fylke implements FintLinks {
+    public static FylkeResource create(Fylke other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof FylkeResource) {
+            return (FylkeResource)other;
+        }
+        FylkeResource result = new FylkeResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter

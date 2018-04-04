@@ -25,6 +25,21 @@ import no.fint.model.felles.basisklasser.Begrep;
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
 public class SprakResource extends Sprak implements FintLinks {
+    public static SprakResource create(Sprak other) {
+        if (other == null) {
+            return null;
+        }
+        if (other instanceof SprakResource) {
+            return (SprakResource)other;
+        }
+        SprakResource result = new SprakResource();
+        result.setGyldighetsperiode(other.getGyldighetsperiode());
+        result.setKode(other.getKode());
+        result.setNavn(other.getNavn());
+        result.setPassiv(other.getPassiv());
+        result.setSystemId(other.getSystemId());
+        return result;
+    }
 
     // Links
     @Getter
