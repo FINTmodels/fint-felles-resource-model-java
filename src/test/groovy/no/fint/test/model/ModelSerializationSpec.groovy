@@ -8,6 +8,7 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator
 import no.fint.model.felles.kompleksedatatyper.Personnavn
 import no.fint.model.resource.Link
 import no.fint.model.resource.felles.PersonResource
+import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource
 import spock.lang.Specification
 
 class ModelSerializationSpec extends Specification {
@@ -45,7 +46,7 @@ class ModelSerializationSpec extends Specification {
                 fodselsnummer: new Identifikator(identifikatorverdi: "12345678901"),
                 navn: new Personnavn(fornavn: "Tore", etternavn: "Test"),
                 fodselsdato: new Date(55, 5, 15),
-                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
+                bostedsadresse: new AdresseResource(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
         )
         person.addKjonn(Link.with("/felles/kjonn/systemid/1"))
         person.addStatsborgerskap(Link.with("/felles/land/systemid/no"))
@@ -66,7 +67,7 @@ class ModelSerializationSpec extends Specification {
                 fodselsnummer: new Identifikator(identifikatorverdi: "12345678901"),
                 navn: new Personnavn(fornavn: "Tore", etternavn: "Test"),
                 fodselsdato: new Date(55, 5, 15),
-                bostedsadresse: new Adresse(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
+                bostedsadresse: new AdresseResource(postnummer: "1234", poststed: "Test", adresselinje: ["Storgata 12"])
         )
         person.addKjonn(new Link(href: "/felles/kjonn/systemid/1"))
         person.addStatsborgerskap(new Link(href: "/felles/land/systemid/no"))

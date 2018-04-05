@@ -1,6 +1,6 @@
 // Built from tag v2.6.0
 
-package no.fint.model.resource.felles;
+package no.fint.model.resource.felles.basisklasser;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -17,58 +17,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import no.fint.model.FintMainObject;
+import no.fint.model.FintAbstractObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
 import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource;
-import java.util.Date;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
-import no.fint.model.felles.kompleksedatatyper.Personnavn;
 import no.fint.model.resource.felles.basisklasser.AktorResource;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class PersonResource extends AktorResource implements FintMainObject, FintLinks {
+public abstract class EnhetResource extends AktorResource implements FintAbstractObject, FintLinks {
     // Attributes
     @JsonIgnore
     @Override
     public List<FintLinks> getNestedResources() {
         List<FintLinks> result = super.getNestedResources();
-        if (bostedsadresse != null) {
-            result.add(bostedsadresse);
+        if (forretningsadresse != null) {
+            result.add(forretningsadresse);
         }
         return result;
     }
-    private String bilde;
-    private AdresseResource bostedsadresse;
-    private Date fodselsdato;
-    @NonNull
-    private Identifikator fodselsnummer;
-    @NonNull
-    private Personnavn navn;
+    private AdresseResource forretningsadresse;
+    private String organisasjonsnavn;
+    private Identifikator organisasjonsnummer;
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
-        
-    public void addStatsborgerskap(Link link) {
-        addLink("statsborgerskap", link);
-    }
-    public void addKjonn(Link link) {
-        addLink("kjonn", link);
-    }
-    public void addMalform(Link link) {
-        addLink("malform", link);
-    }
-    public void addPersonalressurs(Link link) {
-        addLink("personalressurs", link);
-    }
-    public void addMorsmal(Link link) {
-        addLink("morsmal", link);
-    }
-    public void addElev(Link link) {
-        addLink("elev", link);
-    }
 }
