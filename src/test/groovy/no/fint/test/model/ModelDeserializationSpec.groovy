@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import no.fint.model.felles.Person
 import no.fint.model.resource.felles.PersonResource
+import no.fint.model.resource.felles.PersonResources
+
 //import no.fint.model.resource.felles.PersonResources
 import spock.lang.Specification
 
@@ -115,7 +117,6 @@ class ModelDeserializationSpec extends Specification {
         result.postadresse
     }
 
-    /*
     def "Read PersonResources from personresourceslinks.json"() {
         given:
         def input = getClass().getResourceAsStream("/personresourceslinks.json")
@@ -128,8 +129,7 @@ class ModelDeserializationSpec extends Specification {
         result
         result.getTotalItems() == 1
         result.links.self.size() == 1
-        result._embedded._entries[0].bostedsadresse
-        result._embedded._entries[0].postadresse
+        result.content[0].bostedsadresse
+        result.content[0].postadresse
     }
-    */
 }

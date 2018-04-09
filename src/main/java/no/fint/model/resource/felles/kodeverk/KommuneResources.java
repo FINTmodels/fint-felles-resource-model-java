@@ -1,0 +1,17 @@
+// Built from tag v2.6.0
+
+package no.fint.model.resource.felles.kodeverk;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
+import java.util.List;
+
+import no.fint.model.resource.AbstractCollectionResources;
+
+public class KommuneResources extends AbstractCollectionResources<KommuneResource> {
+
+    @Override
+    public TypeReference<List<KommuneResource>> getTypeReference() {
+        return new TypeReference<List<KommuneResource>>() {};
+    }
+}
