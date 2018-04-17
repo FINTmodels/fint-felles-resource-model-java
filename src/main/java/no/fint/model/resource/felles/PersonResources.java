@@ -1,4 +1,4 @@
-// Built from tag v2.6.0
+// Built from tag v2.7.0
 
 package no.fint.model.resource.felles;
 
