@@ -3,7 +3,6 @@
 package no.fint.model.resource.felles;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,10 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
@@ -53,20 +51,50 @@ public class PersonResource extends AktorResource implements FintMainObject, Fin
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
+
+    @JsonIgnore
+    public List<Link> getStatsborgerskap() {
+        return getLinks().getOrDefault("statsborgerskap", Collections.emptyList()); 
+    }
     public void addStatsborgerskap(Link link) {
         addLink("statsborgerskap", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getKjonn() {
+        return getLinks().getOrDefault("kjonn", Collections.emptyList()); 
     }
     public void addKjonn(Link link) {
         addLink("kjonn", link);
     }
+
+    @JsonIgnore
+    public List<Link> getMalform() {
+        return getLinks().getOrDefault("malform", Collections.emptyList()); 
+    }
     public void addMalform(Link link) {
         addLink("malform", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getPersonalressurs() {
+        return getLinks().getOrDefault("personalressurs", Collections.emptyList()); 
     }
     public void addPersonalressurs(Link link) {
         addLink("personalressurs", link);
     }
+
+    @JsonIgnore
+    public List<Link> getMorsmal() {
+        return getLinks().getOrDefault("morsmal", Collections.emptyList()); 
+    }
     public void addMorsmal(Link link) {
         addLink("morsmal", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getElev() {
+        return getLinks().getOrDefault("elev", Collections.emptyList()); 
     }
     public void addElev(Link link) {
         addLink("elev", link);
