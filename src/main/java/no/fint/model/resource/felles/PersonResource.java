@@ -1,4 +1,4 @@
-// Built from tag v2.7.0
+// Built from tag v2.8.0
 
 package no.fint.model.resource.felles;
 
@@ -90,6 +90,14 @@ public class PersonResource extends AktorResource implements FintMainObject, Fin
     }
     public void addMorsmal(Link link) {
         addLink("morsmal", link);
+    }
+
+    @JsonIgnore
+    public List<Link> getParorende() {
+        return getLinks().getOrDefault("parorende", Collections.emptyList()); 
+    }
+    public void addParorende(Link link) {
+        addLink("parorende", link);
     }
 
     @JsonIgnore
