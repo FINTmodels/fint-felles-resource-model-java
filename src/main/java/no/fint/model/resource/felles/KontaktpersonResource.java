@@ -18,6 +18,7 @@ import java.util.Map;
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
+import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
 @Data
 @NoArgsConstructor
@@ -27,6 +28,8 @@ public class KontaktpersonResource implements FintMainObject, FintLinks {
     // Attributes
     @NonNull
     private Boolean foreldreansvar;
+    @NonNull
+    private Identifikator systemId;
     @NonNull
     private String type;
 
