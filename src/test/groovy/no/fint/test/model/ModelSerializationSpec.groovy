@@ -7,6 +7,7 @@ import no.fint.model.felles.kompleksedatatyper.Adresse
 import no.fint.model.felles.kompleksedatatyper.Identifikator
 import no.fint.model.felles.kompleksedatatyper.Personnavn
 import no.fint.model.resource.Link
+import no.fint.model.resource.felles.KontaktpersonResource
 import no.fint.model.resource.felles.PersonResource
 import no.fint.model.resource.felles.kompleksedatatyper.AdresseResource
 import spock.lang.Specification
@@ -82,5 +83,26 @@ class ModelSerializationSpec extends Specification {
         then:
         object
         object.bostedsadresse._links.land
+    }
+
+    def "Serialize KontaktpersonResource with links"() {
+        given:
+        def kontaktperson = new KontaktpersonResource(
+                systemId: new Identifikator(identifikatorverdi: "ABCD1234"),
+                foreldreansvar: true,
+                type: "forelder"
+        )
+        kontaktperson.addPerson(Link.with(Person, "fodselsnummer", "12345678901"))
+        kontaktperson.addKontaktperson(Link.with(Person, "fodselsnummer", "23456789012"))
+
+        when:
+        def result = objectMapper.writeValueAsString(kontaktperson)
+        println(result)
+        def object = jsonSlurper.parseText(result)
+
+        then:
+        object
+        object.foreldreansvar
+        object._links.size() == 2
     }
 }

@@ -24,6 +24,11 @@
       {
         "href": "/felles/kjonn/systemid/1"
       }
+    ],
+    "parorende": [
+      {
+        "href": "/felles/person/fodselsnummer/23456789012"
+      }
     ]
   }
 }

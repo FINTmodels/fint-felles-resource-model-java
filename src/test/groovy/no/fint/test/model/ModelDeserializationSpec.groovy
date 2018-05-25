@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import no.fint.model.felles.Person
+import no.fint.model.resource.felles.KontaktpersonResource
 import no.fint.model.resource.felles.PersonResource
 import no.fint.model.resource.felles.PersonResources
 
@@ -76,6 +77,7 @@ class ModelDeserializationSpec extends Specification {
 
         then:
         result
+        result.links.size() == 3
     }
 
     def "Read Person from personresourcelinks.json"() {
@@ -131,5 +133,20 @@ class ModelDeserializationSpec extends Specification {
         result.links.self.size() == 1
         result.content[0].bostedsadresse
         result.content[0].postadresse
+    }
+
+    def "Read KontaktpersonResource from kontaktpersonresource.json"() {
+        given:
+        def input = getClass().getResourceAsStream("/kontaktpersonresource.json")
+
+        when:
+        def result = objectMapper.readValue(input, KontaktpersonResource)
+        println(result)
+
+        then:
+        result
+        result instanceof KontaktpersonResource
+        result.foreldreansvar
+        result.links.size() == 2
     }
 }
