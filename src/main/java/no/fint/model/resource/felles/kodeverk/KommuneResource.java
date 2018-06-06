@@ -1,4 +1,4 @@
-// Built from tag v2.8.0
+// Built from tag v3.0.0-rc-1
 
 package no.fint.model.resource.felles.kodeverk;
 
