@@ -1,6 +1,6 @@
 // Built from tag v3.0.0
 
-package no.fint.model.resource.felles.kodeverk;
+package no.fint.model.resource.felles.kodeverk.iso;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,18 +24,9 @@ import no.fint.model.felles.basisklasser.Begrep;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 @ToString(callSuper=true)
-public class FylkeResource extends Begrep implements FintMainObject, FintLinks {
+public class SprakResource extends Begrep implements FintMainObject, FintLinks {
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
-        
-
-    @JsonIgnore
-    public List<Link> getKommune() {
-        return getLinks().getOrDefault("kommune", Collections.emptyList()); 
-    }
-    public void addKommune(Link link) {
-        addLink("kommune", link);
-    }
 }

@@ -23,8 +23,8 @@ repositories {
 
 apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/dependencies.gradle'
 dependencies {
-    compile("no.fint:fint-felles-model-java:${version}")
-    compile('no.fint:fint-model-resource:0.3.0-rc-3')
+    compile("no.fint:fint-felles-model-java:3.0.0")
+    compile('no.fint:fint-model-resource:0.3.1')
 
     compileOnly("org.projectlombok:lombok:${lombokVersion}")
 

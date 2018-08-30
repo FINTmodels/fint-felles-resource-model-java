@@ -1,6 +1,6 @@
 // Built from tag v3.0.0
 
-package no.fint.model.resource.felles.kompleksedatatyper;
+package no.fint.model.resource.felles.basisklasser;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,31 +15,28 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import no.fint.model.FintComplexDatatypeObject;
+import no.fint.model.FintAbstractObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
+import no.fint.model.felles.kompleksedatatyper.Periode;
+import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class AdresseResource implements FintComplexDatatypeObject, FintLinks {
+public abstract class BegrepResource implements FintAbstractObject, FintLinks {
     // Attributes
+    private Periode gyldighetsperiode;
     @NonNull
-    private List<String> adresselinje;
-    private String postnummer;
-    private String poststed;
+    private String kode;
+    @NonNull
+    private String navn;
+    private Boolean passiv;
+    @NonNull
+    private Identifikator systemId;
 
     // Relations
     @Getter
     private final Map<String, List<Link>> links = createLinks();
-        
-
-    @JsonIgnore
-    public List<Link> getLand() {
-        return getLinks().getOrDefault("land", Collections.emptyList()); 
-    }
-    public void addLand(Link link) {
-        addLink("land", link);
-    }
 }
