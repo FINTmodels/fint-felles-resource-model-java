@@ -34,7 +34,6 @@ public class AdresseResource implements FintComplexDatatypeObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getLand() {
         return getLinks().getOrDefault("land", Collections.emptyList()); 

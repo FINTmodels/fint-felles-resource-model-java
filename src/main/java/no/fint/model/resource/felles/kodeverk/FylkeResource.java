@@ -30,7 +30,6 @@ public class FylkeResource extends Begrep implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getKommune() {
         return getLinks().getOrDefault("kommune", Collections.emptyList()); 

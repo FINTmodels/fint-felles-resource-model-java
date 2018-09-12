@@ -9,10 +9,6 @@ apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
-jar {
-    baseName = 'fint-felles-resource-model-java'
-}
-
 repositories {
     maven {
         url "http://dl.bintray.com/fint/maven"
@@ -23,7 +19,7 @@ repositories {
 
 apply from: 'https://raw.githubusercontent.com/FINTlibs/fint-buildscripts/v1.3.0/dependencies.gradle'
 dependencies {
-    compile("no.fint:fint-felles-model-java:3.0.0")
+    compile("no.fint:fint-felles-model-java:${apiVersion}")
     compile('no.fint:fint-model-resource:0.3.1')
 
     compileOnly("org.projectlombok:lombok:${lombokVersion}")

@@ -37,7 +37,6 @@ public class KontaktpersonResource implements FintMainObject, FintLinks {
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getKontaktperson() {
         return getLinks().getOrDefault("kontaktperson", Collections.emptyList()); 
@@ -45,7 +44,6 @@ public class KontaktpersonResource implements FintMainObject, FintLinks {
     public void addKontaktperson(Link link) {
         addLink("kontaktperson", link);
     }
-
     @JsonIgnore
     public List<Link> getPerson() {
         return getLinks().getOrDefault("person", Collections.emptyList()); 

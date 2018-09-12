@@ -30,7 +30,6 @@ public class KommuneResource extends Begrep implements FintMainObject, FintLinks
     @Getter
     private final Map<String, List<Link>> links = createLinks();
         
-
     @JsonIgnore
     public List<Link> getFylke() {
         return getLinks().getOrDefault("fylke", Collections.emptyList()); 
