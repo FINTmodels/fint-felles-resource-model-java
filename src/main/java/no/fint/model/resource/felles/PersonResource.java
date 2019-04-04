@@ -1,4 +1,4 @@
-// Built from tag v3.1.0
+// Built from tag v3.2.0-rc-1
 
 package no.fint.model.resource.felles;
 
@@ -66,6 +66,13 @@ public class PersonResource extends AktorResource implements FintMainObject, Fin
         addLink("kjonn", link);
     }
     @JsonIgnore
+    public List<Link> getForeldreansvar() {
+        return getLinks().getOrDefault("foreldreansvar", Collections.emptyList()); 
+    }
+    public void addForeldreansvar(Link link) {
+        addLink("foreldreansvar", link);
+    }
+    @JsonIgnore
     public List<Link> getMalform() {
         return getLinks().getOrDefault("malform", Collections.emptyList()); 
     }
@@ -92,6 +99,13 @@ public class PersonResource extends AktorResource implements FintMainObject, Fin
     }
     public void addParorende(Link link) {
         addLink("parorende", link);
+    }
+    @JsonIgnore
+    public List<Link> getForeldre() {
+        return getLinks().getOrDefault("foreldre", Collections.emptyList()); 
+    }
+    public void addForeldre(Link link) {
+        addLink("foreldre", link);
     }
     @JsonIgnore
     public List<Link> getElev() {

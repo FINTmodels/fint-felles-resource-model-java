@@ -1,4 +1,4 @@
-// Built from tag v3.1.0
+// Built from tag v3.2.0-rc-1
 
 package no.fint.model.resource.felles;
 
@@ -18,6 +18,8 @@ import java.util.Map;
 import no.fint.model.FintMainObject;
 import no.fint.model.resource.FintLinks;
 import no.fint.model.resource.Link;
+import no.fint.model.felles.kompleksedatatyper.Kontaktinformasjon;
+import no.fint.model.felles.kompleksedatatyper.Personnavn;
 import no.fint.model.felles.kompleksedatatyper.Identifikator;
 
 @Data
@@ -26,8 +28,11 @@ import no.fint.model.felles.kompleksedatatyper.Identifikator;
 @ToString
 public class KontaktpersonResource implements FintMainObject, FintLinks {
     // Attributes
+    @Deprecated
     @NonNull
     private Boolean foreldreansvar;
+    private Kontaktinformasjon kontaktinformasjon;
+    private Personnavn navn;
     @NonNull
     private Identifikator systemId;
     @NonNull
@@ -44,10 +49,12 @@ public class KontaktpersonResource implements FintMainObject, FintLinks {
     public void addKontaktperson(Link link) {
         addLink("kontaktperson", link);
     }
+    @Deprecated
     @JsonIgnore
     public List<Link> getPerson() {
         return getLinks().getOrDefault("person", Collections.emptyList()); 
     }
+    @Deprecated
     public void addPerson(Link link) {
         addLink("person", link);
     }
