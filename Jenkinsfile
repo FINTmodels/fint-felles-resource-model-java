@@ -1,25 +1,20 @@
 pipeline {
-    agent none
+    agent { 
+        docker {
+            label 'docker'
+            image 'gradle:4.6.0-jdk8-alpine'
+        }
+    }
     stages {
         stage('Build') {
-            agent { 
-                docker {
-                    label 'docker'
-                    image 'gradle:4.6.0-jdk8-alpine'
-                }
-            }
             steps {
-                sh 'gradle --no-daemon clean build'
+                retry(3) {
+                    sh 'gradle --no-daemon clean build'
+                }
                 stash includes: 'build/libs/*.jar', name: 'libs'
             }
         }
         stage('Deploy') {
-            agent { 
-                docker {
-                    label 'docker'
-                    image 'gradle:4.6.0-jdk8-alpine'
-                }
-            }
             environment {
                 BINTRAY = credentials('fint-bintray')
             }
