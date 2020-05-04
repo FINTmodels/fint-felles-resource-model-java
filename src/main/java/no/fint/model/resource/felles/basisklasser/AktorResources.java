@@ -1,4 +1,4 @@
-// Built from tag v3.5.0-rc-2
+// Built from tag v3.5.0
 
 package no.fint.model.resource.felles.basisklasser;
 
